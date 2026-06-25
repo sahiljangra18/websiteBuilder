@@ -1,0 +1,27 @@
+{
+  "pageId": "page-home-draft",
+  "slug": "home",
+  "title": "Welcome to Page Studio (Draft)",
+  "sections": [
+    {
+      "id": "sec-1782386364884-1clo",
+      "type": "hero",
+      "props": {
+        "title": "New Hero Section",
+        "subtitle": "hello\n",
+        "ctaText": "Get Started",
+        "ctaUrl": "/"
+      }
+    },
+    {
+      "id": "sec-1782386469120-eskd",
+      "type": "cta",
+      "props": {
+        "title": "Join our newsletter today",
+        "description": "Don't miss out on updates",
+        "buttonText": "Sign Up",
+        "buttonUrl": "/"
+      }
+    }
+  ]
+}

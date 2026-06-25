@@ -1,0 +1,40 @@
+{
+  "pageId": "page-home-draft",
+  "slug": "home",
+  "title": "Welcome to Page Studio (Draft)",
+  "sections": [
+    {
+      "id": "sec-1782386564819-ezzc",
+      "type": "featureGrid",
+      "props": {
+        "title": "Our Features",
+        "features": [
+          {
+            "title": "Feature 1",
+            "description": "Feature description",
+            "icon": "⚡"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sec-1782386570331-4h5a",
+      "type": "testimonial",
+      "props": {
+        "quote": "This is a fantastic quote!",
+        "author": "Famous Person",
+        "role": "Executive Officer"
+      }
+    },
+    {
+      "id": "sec-1782386557681-31ni",
+      "type": "hero",
+      "props": {
+        "title": "New Hero Section",
+        "subtitle": "Add a description here",
+        "ctaText": "Get Started",
+        "ctaUrl": "/"
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+name: Page Studio CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-to-version: 20
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Run Unit Tests (Vitest)
+      run: npm run test
+
+    - name: Build Application
+      run: npm run build
+
+    - name: Install Playwright Browsers
+      run: npx playwright install chromium --with-deps
+
+    - name: Run E2E & Accessibility Tests (Playwright + Axe)
+      run: npx playwright test
+
+    - name: Upload Test Report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: playwright-report
+        path: |
+          playwright-report/
+          a11y-report.json
+        retries: 3
