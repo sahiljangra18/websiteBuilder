@@ -5,7 +5,17 @@ import path from 'path';
 
 test.describe('Page Studio E2E and Accessibility Gates', () => {
   
-  test('should load preview page, render hero, and run accessibility audit', async ({ page }) => {
+  test('should load preview page, render hero, and run accessibility audit', async ({ page, context }) => {
+    // Set simulated cookie for editor role to pass auth middleware
+    await context.addCookies([
+      {
+        name: 'user-role',
+        value: 'editor',
+        domain: 'localhost',
+        path: '/',
+      },
+    ]);
+
     // 1. Visit preview page
     await page.goto('/preview/home');
     
@@ -97,5 +107,21 @@ test.describe('Page Studio E2E and Accessibility Gates', () => {
     // Type in new title and verify live preview updates
     await titleInput.fill('Revolutionary Studio');
     await expect(page.locator('text=Revolutionary Studio').first()).toBeVisible();
+  });
+
+  test('should fail login with non-gmail address', async ({ page }) => {
+    await page.goto('/login');
+    await page.locator('input#email-input').fill('user@yahoo.com');
+    await page.locator('input#password-input').fill('secret');
+    await page.locator('button[type="submit"]').click();
+    await expect(page.locator('text=Must be a valid Gmail address')).toBeVisible();
+  });
+
+  test('should succeed login with gmail and redirect to preview', async ({ page }) => {
+    await page.goto('/login');
+    await page.locator('input#email-input').fill('user@gmail.com');
+    await page.locator('input#password-input').fill('secret123');
+    await page.locator('button[type="submit"]').click();
+    await page.waitForURL('**/preview/home');
   });
 });

@@ -3,15 +3,20 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const roleCookie = request.cookies.get('user-role');
+  const role = roleCookie?.value;
 
-  // Protect /studio/[slug] routes
+  // 1. If not authenticated, redirect all preview and studio paths to /login
+  if (!role && (pathname.startsWith('/studio/') || pathname.startsWith('/preview/'))) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/login';
+    return NextResponse.redirect(url);
+  }
+
+  // 2. Protect /studio/[slug] routes (editors and publishers only)
   if (pathname.startsWith('/studio/')) {
     const slug = pathname.split('/')[2] || 'home';
-    const roleCookie = request.cookies.get('user-role');
-    const role = roleCookie?.value || 'viewer'; // Default to viewer for safety
-
     if (role !== 'editor' && role !== 'publisher') {
-      // Redirect to preview with an unauthorized message query param
       const url = request.nextUrl.clone();
       url.pathname = `/preview/${slug}`;
       url.searchParams.set('error', 'unauthorized');
@@ -24,5 +29,5 @@ export function middleware(request: NextRequest) {
 
 // Config to specify which routes this middleware runs on
 export const config = {
-  matcher: ['/studio/:path*'],
+  matcher: ['/studio/:path*', '/preview/:path*'],
 };

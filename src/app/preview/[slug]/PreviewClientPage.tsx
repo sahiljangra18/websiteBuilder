@@ -12,6 +12,7 @@ interface PreviewClientPageProps {
   slug: string;
   initialPublishedPage: Page | null;
   initialDraftPage: Page | null;
+  releasedVersions?: { version: string; pageData: Page }[];
   isUnauthorized?: boolean;
 }
 
@@ -19,12 +20,14 @@ export default function PreviewClientPage({
   slug,
   initialPublishedPage,
   initialDraftPage,
+  releasedVersions = [],
   isUnauthorized = false,
 }: PreviewClientPageProps) {
   const dispatch = useAppDispatch();
   const currentRole = useAppSelector((state) => state.ui.userRole);
   
-  const [sourceMode, setSourceMode] = useState<'published' | 'contentful-draft' | 'local-draft'>('published');
+  const [sourceMode, setSourceMode] = useState<'published' | 'contentful-draft' | 'local-draft' | 'release'>('published');
+  const [selectedReleaseVersion, setSelectedReleaseVersion] = useState<string>('');
   const [activePage, setActivePage] = useState<Page | null>(initialPublishedPage);
   const [showRoleBanner, setShowRoleBanner] = useState(isUnauthorized);
   
@@ -62,6 +65,7 @@ export default function PreviewClientPage({
   // Handle switching data source
   const handleSourceChange = (mode: 'published' | 'contentful-draft' | 'local-draft') => {
     setSourceMode(mode);
+    setSelectedReleaseVersion('');
     if (mode === 'published') {
       setActivePage(initialPublishedPage);
     } else if (mode === 'contentful-draft') {
@@ -164,6 +168,38 @@ export default function PreviewClientPage({
               )}
             </div>
 
+            {/* Versioned Releases Selector */}
+            {releasedVersions && releasedVersions.length > 0 && (
+              <div className="flex items-center space-x-2">
+                <label htmlFor="version-select" className="text-xs font-semibold text-slate-400">
+                  Release:
+                </label>
+                <select
+                  id="version-select"
+                  value={sourceMode === 'release' ? selectedReleaseVersion : ''}
+                  onChange={(e) => {
+                    const ver = e.target.value;
+                    if (ver) {
+                      const rel = releasedVersions.find((r) => r.version === ver);
+                      if (rel) {
+                        setSourceMode('release');
+                        setSelectedReleaseVersion(ver);
+                        setActivePage(rel.pageData);
+                      }
+                    }
+                  }}
+                  className="bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                >
+                  <option value="" disabled>Select version...</option>
+                  {releasedVersions.map((rel) => (
+                    <option key={rel.version} value={rel.version}>
+                      v{rel.version}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
             {/* Link to Studio */}
             {currentRole !== 'viewer' ? (
               <Link
@@ -183,6 +219,17 @@ export default function PreviewClientPage({
                 Studio Locked
               </span>
             )}
+
+            {/* Logout Button */}
+            <button
+              onClick={() => {
+                document.cookie = 'user-role=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+                window.location.href = '/login';
+              }}
+              className="border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-slate-700"
+            >
+              Sign Out
+            </button>
           </div>
         </div>
       </header>
@@ -219,6 +266,7 @@ export default function PreviewClientPage({
               {sourceMode === 'published' && 'Contentful Published'}
               {sourceMode === 'contentful-draft' && 'Contentful Draft'}
               {sourceMode === 'local-draft' && 'Local Studio Unsaved Draft'}
+              {sourceMode === 'release' && `Published Release v${selectedReleaseVersion}`}
             </strong>
           </span>
         </div>

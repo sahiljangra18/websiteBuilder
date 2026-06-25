@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-06-25T11:16:34.741Z",
+  "timestamp": "2026-06-25T12:56:21.879Z",
   "url": "http://localhost:3000/preview/home",
   "toolOptions": {
     "runOnly": {
@@ -2347,6 +2347,24 @@
           "target": [
             ".hover\\:text-slate-200"
           ]
+        },
+        {
+          "any": [
+            {
+              "id": "button-has-visible-text",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has inner text that is visible to screen readers"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-slate-700\">Sign Out</button>",
+          "target": [
+            ".hover\\:bg-slate-800"
+          ]
         }
       ]
     },
@@ -2576,7 +2594,7 @@
           "impact": null,
           "html": "<label for=\"role-select\" class=\"text-xs font-semibold text-slate-400\">Simulate Role:</label>",
           "target": [
-            "label"
+            "label[for=\"role-select\"]"
           ]
         },
         {
@@ -2659,6 +2677,56 @@
             {
               "id": "color-contrast",
               "data": {
+                "fgColor": "#90a1b9",
+                "bgColor": "#0e1529",
+                "contrastRatio": 6.89,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 6.89"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<label for=\"version-select\" class=\"text-xs font-semibold text-slate-400\">Release:</label>",
+          "target": [
+            "label[for=\"version-select\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#e2e8f0",
+                "bgColor": "#0e1529",
+                "contrastRatio": 14.71,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 14.71"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<select id=\"version-select\" class=\"bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium\">",
+          "target": [
+            "#version-select"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
                 "fgColor": "#ffffff",
                 "bgColor": "#155dfc",
                 "contrastRatio": 5.24,
@@ -2676,7 +2744,32 @@
           "impact": null,
           "html": "<a class=\"bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-blue-800\" href=\"/studio/home\">",
           "target": [
-            ".transition-colors"
+            ".gap-1\\.5"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#cad5e2",
+                "bgColor": "#0e1529",
+                "contrastRatio": 12.2,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element has sufficient color contrast of 12.2"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-slate-700\">Sign Out</button>",
+          "target": [
+            ".hover\\:bg-slate-800"
           ]
         },
         {
@@ -3133,6 +3226,24 @@
           "any": [
             {
               "id": "duplicate-id-aria",
+              "data": "version-select",
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Document has no elements referenced with ARIA or labels that share the same id attribute"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<select id=\"version-select\" class=\"bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium\">",
+          "target": [
+            "#version-select"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "duplicate-id-aria",
               "data": "hero-1-title",
               "relatedNodes": [],
               "impact": "critical",
@@ -3232,7 +3343,7 @@
                 {
                   "html": "<label for=\"role-select\" class=\"text-xs font-semibold text-slate-400\">Simulate Role:</label>",
                   "target": [
-                    "label"
+                    "label[for=\"role-select\"]"
                   ]
                 }
               ],
@@ -3244,6 +3355,31 @@
           "html": "<select id=\"role-select\" class=\"bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium\">",
           "target": [
             "#role-select"
+          ]
+        },
+        {
+          "any": [],
+          "all": [],
+          "none": [
+            {
+              "id": "multiple-label",
+              "data": null,
+              "relatedNodes": [
+                {
+                  "html": "<label for=\"version-select\" class=\"text-xs font-semibold text-slate-400\">Release:</label>",
+                  "target": [
+                    "label[for=\"version-select\"]"
+                  ]
+                }
+              ],
+              "impact": "moderate",
+              "message": "Form field does not have multiple label elements"
+            }
+          ],
+          "impact": null,
+          "html": "<select id=\"version-select\" class=\"bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium\">",
+          "target": [
+            "#version-select"
           ]
         }
       ]
@@ -3398,7 +3534,7 @@
           "impact": null,
           "html": "<a class=\"bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-blue-800\" href=\"/studio/home\">",
           "target": [
-            ".transition-colors"
+            ".gap-1\\.5"
           ]
         },
         {
@@ -3599,6 +3735,78 @@
           "target": [
             ".hover\\:text-slate-200"
           ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<option value=\"\" disabled=\"\" selected=\"\">Select version...</option>",
+          "target": [
+            "option[value=\"\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<option value=\"1.0.0\">v<!-- -->1.0.0</option>",
+          "target": [
+            "option[value=\"1.0.0\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<option value=\"2.0.0\">v<!-- -->2.0.0</option>",
+          "target": [
+            "option[value=\"2.0.0\"]"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "no-focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element does not have focusable descendants"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-slate-700\">Sign Out</button>",
+          "target": [
+            ".hover\\:bg-slate-800"
+          ]
         }
       ]
     },
@@ -3634,7 +3842,7 @@
                 {
                   "html": "<label for=\"role-select\" class=\"text-xs font-semibold text-slate-400\">Simulate Role:</label>",
                   "target": [
-                    "label"
+                    "label[for=\"role-select\"]"
                   ]
                 }
               ],
@@ -3656,6 +3864,41 @@
           "html": "<select id=\"role-select\" class=\"bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium\">",
           "target": [
             "#role-select"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "explicit-label",
+              "data": {
+                "explicitLabel": "Release:"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<label for=\"version-select\" class=\"text-xs font-semibold text-slate-400\">Release:</label>",
+                  "target": [
+                    "label[for=\"version-select\"]"
+                  ]
+                }
+              ],
+              "impact": "critical",
+              "message": "Element has an explicit <label>"
+            }
+          ],
+          "all": [],
+          "none": [
+            {
+              "id": "hidden-explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Form element has a visible explicit <label>"
+            }
+          ],
+          "impact": null,
+          "html": "<select id=\"version-select\" class=\"bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium\">",
+          "target": [
+            "#version-select"
           ]
         }
       ]
@@ -3795,6 +4038,38 @@
               "id": "target-size",
               "data": {
                 "minSize": 24,
+                "width": 130,
+                "height": 32
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Control has sufficient size (130px by 32px, should be at least 24px by 24px)"
+            },
+            {
+              "id": "target-offset",
+              "data": {
+                "closestOffset": 24,
+                "minOffset": 24
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Target has sufficient space from its closest neighbors. Safe clickable space has a diameter of 24px which is at least 24px."
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<select id=\"version-select\" class=\"bg-slate-850 text-slate-200 border border-slate-700 rounded-lg text-xs px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium\">",
+          "target": [
+            "#version-select"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "target-size",
+              "data": {
+                "minSize": 24,
                 "width": 143,
                 "height": 32
               },
@@ -3818,7 +4093,39 @@
           "impact": null,
           "html": "<a class=\"bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-4 focus:ring-blue-800\" href=\"/studio/home\">",
           "target": [
-            ".transition-colors"
+            ".gap-1\\.5"
+          ]
+        },
+        {
+          "any": [
+            {
+              "id": "target-size",
+              "data": {
+                "minSize": 24,
+                "width": 75.9,
+                "height": 34
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Control has sufficient size (75.9px by 34px, should be at least 24px by 24px)"
+            },
+            {
+              "id": "target-offset",
+              "data": {
+                "closestOffset": 24,
+                "minOffset": 24
+              },
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Target has sufficient space from its closest neighbors. Safe clickable space has a diameter of 24px which is at least 24px."
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": null,
+          "html": "<button class=\"border border-slate-800 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-slate-700\">Sign Out</button>",
+          "target": [
+            ".hover\\:bg-slate-800"
           ]
         },
         {
@@ -3968,7 +4275,7 @@
           "impact": "serious",
           "html": "<p class=\"mt-6 text-lg text-slate-300 sm:text-xl max-w-2xl mx-auto\">A schema-driven Page Studio built with Next.js, Redux, and Contentful.</p>",
           "target": [
-            ".text-slate-300"
+            ".sm\\:text-xl"
           ],
           "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
         },
